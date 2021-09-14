@@ -1,0 +1,221 @@
+/* Global */
+#content {
+    padding: 1.5% !important;
+}
+
+/* Left Navigation */
+#Navigation {
+    height: 100%;
+}
+
+#Navigation .btn {
+    background-color: #F4F9FA;
+    border-radius: 12px;
+    border: none;
+    margin: 1px;
+}
+
+#Navigation .contentBox {
+    width: 100%;
+    height: fit-content;
+    align-self: center;
+}
+
+#Navigation .picture {
+    max-height: 20%;
+    max-width: 20%;
+}
+
+#Navigation .clicktxt {
+    color: #17646F;
+    font-size: 16pt;
+}
+
+#Navigation #Scan {
+    background-color: #8FC6CD !important;
+}
+
+#Navigation #Scan .picture {
+    max-height: 10%;
+    max-width: 10%;
+}
+
+/* End Left Navigation */
+
+/* Right AlertList */
+
+#Alert {
+    background-color: #8FC6CD;
+    border-radius: 8px;
+    border: solid 1px #17646F;
+}
+
+#Alert>.AlertTitle>.title3 {
+    font-size: larger;
+}
+
+#Alert .picture {
+    max-width: 30px;
+    max-height: 30px;
+    align-self: center;
+}
+
+#Alert .listWrapper {
+    font-size: 20px;
+}
+
+#Alert .listWrapper>.title {
+    color: #FFFFFF;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: larger;
+}
+
+#Alert .listWrapper>.title.expired {
+    background-color: #EC373F;
+}
+
+/* OneDay */
+
+#Alert .listWrapper>.title.oneday {
+    background-color: #FF8312;
+
+}
+
+/* ThreeDay */
+
+#Alert .listWrapper>.title.threeday {
+    background-color: #FFC107;
+
+}
+.list{
+    border-radius: 0 0 8px 8px;
+    max-height: 18vh;
+    overflow-x: hidden;
+}
+#Alert .listWrapper .detailTitle {
+    background-color: #C0E4E8;
+}
+
+#Alert .listWrapper{
+    max-height: 22.5vh;
+    /* overflow-x: hidden; */
+}
+
+#Alert .listWrapper .item {
+    /* border-bottom: solid 1px #000000; */
+    border-radius: 0 12px 0 12px;
+}
+
+#Alert .listWrapper .list::-webkit-scrollbar {
+    position: relative;
+    width: 10px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+
+/* Track */
+
+#Alert .listWrapper .list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(187, 182, 182);
+    border-radius: 3px;
+}
+
+
+/* Handle */
+
+#Alert .listWrapper .list::-webkit-scrollbar-thumb {
+    background: #187685;
+    border-radius: 3px;
+    position: relative;
+}
+
+
+/* Handle on hover */
+
+#Alert .listWrapper .list::-webkit-scrollbar-thumb:hover {
+    background: #187685;
+}
+
+
+/* Modal */
+
+#ConfirmModal .modal-content {
+    margin: 10% 0% 0% 0%;
+    background-color: #FFFFFF;
+    opacity: 0.95;
+    border-radius: 8px;
+    border: solid 3px #17646F;
+    color: #17646F;
+}
+
+#ConfirmModal .modal-header {
+    background: #8FC6CD;
+    font-size: 30px;
+    color: white;
+}
+
+#ConfirmModal .modal-body {
+    padding: 30px 30px;
+    font-size: x-large;
+}
+
+#ConfirmModal input {
+    border: solid 1px #e2e2e2;
+    font-size: 20px;
+    height: 6vh;
+    width: 8vh;
+}
+
+#ConfirmModal .upNdown {
+    border: none;
+    background-color: white;
+}
+
+#ConfirmModal .cancel {
+    border: solid 2px #FFFFFF;
+    background-color: #598F97;
+    color: #FFFFFF;
+    border-radius: 8px;
+    width: 15vh;
+}
+
+#ConfirmModal .confirm {
+    border: solid 2px #FFFFFF;
+    background-color: #D26666;
+    color: #FFFFFF;
+    border-radius: 8px;
+    width: 15vh;
+}
+
+
+/* End Right AlertList */
+
+
+@media screen and (max-width:575.9px) {
+    #Navigation {
+        min-height: 40vh;
+        max-height: 40vh;
+        margin-bottom: 5%;
+    }
+
+    #Navigation #Scan .picture {
+        max-height: 7.5%;
+        max-width: 7.5%;
+    }
+
+    #Alert {
+        min-height: 60vh;
+    }
+}
+
+@media screen and (min-width:575.91px) and (max-width:767.91px) {
+    #Navigation .minor>.d-flex {
+        flex-direction: column;
+    }
+
+    #Navigation .minor>.d-flex>.btn {
+        height: 100%;
+    }
+}

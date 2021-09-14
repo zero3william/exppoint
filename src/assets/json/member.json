@@ -1,0 +1,25 @@
+[
+    {
+        "Account": "A000001",
+        "Username": "王小明",
+        "Role":"admin"
+    },
+    {
+        "Account": "A000002",
+        "Username": "江小美",
+        "Role":"admin"
+    },{
+        "Account": "A000003",
+        "Username": "廖小榕",
+        "Role":"employee"
+    },
+    {
+        "Account": "A000004",
+        "Username": "劉小緹",
+        "Role":"employee"
+    },{
+        "Account": "A000005",
+        "Username": "林蓉蓉",
+        "Role":"employee"
+    }
+]

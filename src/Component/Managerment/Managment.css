@@ -1,0 +1,150 @@
+#back {
+    width: 3vw;
+    min-height: 33px;
+    min-width: 33px;
+}
+/* 
+.top {
+    margin: 2% 4%;
+} */
+
+.middle {
+    margin: 0 8%;
+}
+
+.title {
+    color: #17646F;
+    border-bottom: solid 2px #17646F;
+}
+
+/* 管理者 */
+.headtxt {
+    color: #ffffff;
+    background-color: #f1aec5;
+    border-radius: 0.5rem;
+    /* width: 100px; */
+    /* height: 30vh; */
+    min-height: 60px;
+    max-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+/* 員工 */
+.headtxt2 {
+    color: #ffffff;
+    background-color: #8FC6CD;
+    border-radius: 0.5rem;
+    /* width: 100px;
+    height: 30vh; */
+    min-height: 60px;
+    max-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+
+
+/* model */
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 0.95;
+    border-radius: 8px;
+    border: solid 3px #17646F;
+    color: #17646F;
+}
+
+.modal-body {
+    padding: 30px 20px;
+    font-size: x-large;
+}
+
+.modelpic {
+    max-height: 20px;
+    max-width: 20px;
+}
+
+.addmodalpic {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+input {
+    border: solid 1px #e2e2e2;
+    font-size: medium;
+}
+
+.modal_btn {
+    border: solid 2px #FFFFFF;
+    color: #FFFFFF;
+    border-radius: 8px;
+}
+
+.cancel {
+    border: none;
+    background-color: #598F97;
+    transition: all 0.5s ease-out;
+}
+
+.confirm {
+    border: none;
+    background-color: #D26666;
+    transition: all 0.5s ease-out;
+}
+
+.confirm:hover {
+    color: #FFFFFF;
+    background-color: #d23636;
+    transition: all 0.5s ease-out;
+}
+
+/*  */
+/* scrollbar */
+
+/* width */
+#root ::-webkit-scrollbar {
+    position: relative;
+    width: 10px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+/* Track */
+#root ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(187, 182, 182);
+    border-radius: 3px;
+}
+
+/* Handle */
+#root ::-webkit-scrollbar-thumb {
+    background: #7cc4cf;
+    border-radius: 3px;
+    position: relative;
+}
+
+/* 大畫面 */
+/*@media screen and (min-width:576px) {
+
+    `/* 管理者 
+    .headtxt,
+    .headtxt2 {
+        min-width: 100px;
+        min-height: 200px;
+        max-height: 200px;
+        border-radius: 1rem;
+    }
+
+    .cube {
+        min-width: 220px;
+        border-radius: 1rem;
+        width: 220px;
+        margin: 0 2%;
+        height: 30vh;
+        min-height: 200px;
+        max-height: 200px;
+    }
+
+    .pic {
+        display: block;
+    }
+
+}*/

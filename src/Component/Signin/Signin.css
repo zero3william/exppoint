@@ -1,0 +1,100 @@
+#article {
+  background-color: #ffffff;
+}
+
+#signinBG {
+  background-color: #ffffff;
+  border: solid 2px #17646f;
+  border-radius: 8px;
+  margin: 0vw 20vw 0vw 20vw;
+  padding: 2vw;
+}
+
+#top-article {
+  padding: 8vh 0;
+  background-color: #ffffff;
+}
+
+.accNpw {
+  color: #17646f;
+  border: soild 1px #17646f;
+  font-size: larger;
+}
+
+input {
+  background-color: none;
+  border: none;
+  border-bottom: solid 2px #17646f;
+  font-weight: 300;
+  width: 30vw !important;
+  font-size: larger;
+  height: 35px;
+}
+
+input::placeholder {
+  color: #cccccc;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+#top-article button {
+  background: #7ebdc5;
+  color: #ffffff;
+  opacity: 1;
+  transition: all 0.4s ease-in-out;
+  width: 70px !important;
+  font-size: larger;
+  border: solid 1px #17646f !important;
+  border-radius: 8px !important;
+}
+
+.title_signin {
+  color: #17646f;
+}
+
+@media screen and (min-width: 1201px) {
+  .accNpw,
+  input {
+    font-size: xx-large;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #signinBG {
+    margin: 0vw 14vw 0vw 14vw;
+  }
+  input {
+    width: 40vw !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  #signinBG {
+    margin: 0vw 7vw 0vw 7vw;
+  }
+  input {
+    width: 45vw !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .accNpw,
+  input {
+    font-size: large;
+    height: 30px;
+  }
+  #top-article button {
+    font-size: large !important;
+  }
+  #signinBG {
+    margin: 2vw;
+  }
+  input {
+    width: 50vw !important;
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+  }
+}
