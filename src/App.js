@@ -1,7 +1,7 @@
 import LoginPage from "./Container/LoginPage";
 import MainPage from "./Container/MainPage";
-import Header from "./Component/Header/Header";
-import Index from "./Component/Index/Index";
+// import StatisticsPage from "./Container/StatisticsPage";
+// import ManagementPage from "./Container/ManagementPage";
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,11 +14,14 @@ const App = () => {
         <Router>
             <Switch>
                 <AuthRoute path="/index" type="private">
-                    <Header />
-                    <Index />
+                    <MainPage />
                 </AuthRoute>
 
                 <AuthRoute path="/home" type="private">
+                    <MainPage />
+                </AuthRoute>
+
+                <AuthRoute path="/Statistics" type="private">
                     <MainPage />
                 </AuthRoute>
 

@@ -32,7 +32,7 @@ const Signin = () => {
             "Account": id,
             "Password": pw
         }
-        axios.post(`http://163.17.135.161:39780/member/login`, payload)
+        axios.post('/member/login', payload)
             .then(res => { 
                 if (res.data.status === "OK") {
                     setToken(res.data.data)
@@ -40,10 +40,12 @@ const Signin = () => {
                 }
             })
             .catch(err => {
-                if (err.response.data.status === "NG") {
+                if (err.response && err.respornse.data.status === "NG") {
                     alert("帳號密碼錯誤")
                     // alert(err.response.data.message)
                     setLogin(false)
+                } else {
+                    alert("伺服器沒有回應")
                 }
             })
         

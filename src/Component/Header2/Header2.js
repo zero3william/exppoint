@@ -1,9 +1,7 @@
 /* Import Packages */
-
 import React, { Component } from 'react';
 
 /* Import CSS*/
-
 import './Header.css';
 
 /* Import Images */

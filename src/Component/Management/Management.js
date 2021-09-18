@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 
 import Member from './Member/Member'
-import './Managment.css';
+import './Management.css';
 
 import g_button from '../../assets/images/g-button.png'
 
 import MemberList from '../../assets/json/member.json'
-class Managment extends Component {
+class Management extends Component {
 
     constructor(props) {
         super(props);

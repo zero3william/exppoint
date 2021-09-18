@@ -1,10 +1,7 @@
 /* Import Packages */
-
 import React, { useState } from 'react';
-import { Link, useLocation } from "react-router-dom";
 import Fade from 'react-bootstrap/Fade'
 import { useHistory } from 'react-router-dom';
-import { Collapse } from 'react-collapse';
 
 /* Import CSS*/
 import './Header.css';
@@ -13,7 +10,7 @@ import './Header.css';
 import Logo from '../../assets/images/Logo.png'
 import g_user from '../../assets/images/g-user.png'
 
-const Header = (props) => {
+const Header = () => {
     const history = useHistory();
     const [open, setOpen] = useState(false);
 
@@ -26,10 +23,7 @@ const Header = (props) => {
     const Username = localStorage.getItem('Username');
 
     return (
-
         <div>
-            {/* 登入成功
-            {`${payload.payload.Account} ${payload.payload.Role} ${payload.payload.Username}`} */}
             <div id="header" className="d-flex justify-content-between">
                 <img id="logo" className="float-start" src={Logo} alt="Logo" />
                 <div className="p-0 user_btn align-self-center mx-3" onClick={() => setOpen(!open)}
@@ -46,7 +40,6 @@ const Header = (props) => {
             </Fade>
         </div>
     );
-
 }
 
 export default Header;
