@@ -25,7 +25,7 @@ function Item(props) {
     return (
         hidden===true ? <></> : 
         <>
-            <div class="item" variant="primary" onClick={handleShow}>
+            <div className="item" variant="primary" onClick={handleShow}>
                 <div className="itemName text-center">{props.detail.Item_Name}</div>
                 <Row className="detailTitle text-center">
                     <Col>到期日</Col>

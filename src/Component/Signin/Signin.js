@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
-// import Member from './Member/Member'
 import './Signin.css';
 
 import { useHistory } from 'react-router-dom';
@@ -20,12 +17,7 @@ const Signin = () => {
             localStorage.setItem('token', token)
             history.push(`/index`)
         }
-    }, [login]);
-
-
-    const forgetPasswordRequest = () => {
-        console.log("forget!!!!!")
-    }
+    });
 
     const sendLoignRequest = () => {
         const payload = {
@@ -33,7 +25,7 @@ const Signin = () => {
             "Password": pw
         }
         axios.post('/member/login', payload)
-            .then(res => { 
+            .then(res => {
                 if (res.data.status === "OK") {
                     setToken(res.data.data)
                     setLogin(true)
@@ -48,7 +40,7 @@ const Signin = () => {
                     alert("伺服器沒有回應")
                 }
             })
-        
+
     }
 
     const inputId = (e) => {
@@ -83,7 +75,6 @@ const Signin = () => {
                             <input type="password" className="text-center" placeholder="請輸入密碼" name="pw" onChange={inputPw}></input>
                         </Col>
                     </Row>
-                    <Row className="justify-content-end mx-5" onClick={forgetPasswordRequest} >忘記密碼?</Row>
                     <Row>
                         <Col className="text-center mt-4 mb-3">
                             <Button type="submit" className="btn fs-4 p-1" onClick={sendLoignRequest}>確認</Button>

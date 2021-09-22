@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+
+import { Link } from 'react-router-dom';
 
 import Member from './Member/Member'
-import './Management.css';
+import './Managment.css';
+import AddModal from './AddModal.js'
 
 import g_button from '../../assets/images/g-button.png'
 
 import MemberList from '../../assets/json/member.json'
-class Management extends Component {
+class Managment extends Component {
 
     constructor(props) {
         super(props);
@@ -104,20 +107,20 @@ class Management extends Component {
 
         return (
 
-            <div id="content" className="m-0 p-0 container-fluid">
+            <div id="Managment_content" className="m-0 p-0 container-fluid">
                 {/* top */}
-                <Row className="d-flex lh-base align-items-center px-4 py-4 px-sm-5">
+                <Row className="topd-flex lh-base align-items-center px-4 py-4 px-sm-5">
                     <Col xs={1} className="d-flex justify-content-center">
-                        <img id="back" src={g_button} alt="back" />
+                        <Link to="/index" style={{ textDecoration: 'none' }} className="my-auto">
+                            <img id="back" src={g_button} alt="back" />
+                        </Link>
                     </Col>
                     <Col className="title me-sm-5 me-1 py-1">
                         <Row>
                             <Col className="align-self-center d-flex fs-2 text-start">人員管理</Col>
                             <Col className="align-self-center d-flex justify-content-end mx-1">
-                                <Button id="add_member" className="fs-5 py-1 px-2"
-                                    data-bs-toggle="modal" data-bs-target="#addModal">
-                                    <span>新增成員 </span>
-                                </Button>
+                                {/* 新增成員 */}
+                                <AddModal />
 
                             </Col>
                         </Row>

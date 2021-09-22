@@ -1,14 +1,17 @@
 /* Import Packages */
 
 import React, { Component } from 'react';
-import { Col, Row, Button, Modal, CloseButton } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 
 /* Import CSS */
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Member.css'
+// modal
+import RemoveModal from './RemoveModal.js'
+import DeleteModal from './DeleteModal.js'
+import EditModal from './EditModal.js'
 /* Import Images */
-import g_edit from '../../../assets/images/g-edit.png'
 import w_user from '../../../assets/images/w-user.png';
 
 class Member extends Component {
@@ -19,17 +22,6 @@ class Member extends Component {
             width: "220px",
             showModal: false
         };
-
-    }
-    setShow() {
-        this.setState({
-            showModal: true
-        })
-    }
-    setClose() {
-        this.setState({
-            showModal: false
-        })
 
     }
 
@@ -51,9 +43,8 @@ class Member extends Component {
 
                     {/* edit button */}
                     <Col className={_isClick ? "d-block" : "d-none"}>
-                        <Button className="editbtn" data-bs-toggle="modal" data-bs-target="#editModal">
-                            <img className="edit d-flex align-self-center" src={g_edit} alt="g-edit" />
-                        </Button>
+                        {/* 編輯職員名稱 */}
+                        <EditModal/>
                     </Col>
 
                 </Row>
@@ -80,30 +71,13 @@ class Member extends Component {
                 </div>
                 {/* button */}
                 <div className={"justify-content-center mt-2 btns " + (_isClick ? "active" : "")}>
-
-                    <Button className="fs-6 btn py-1 mx-1" data-bs-toggle="modal" data-bs-target="#removeModal"
-                        onClick={this.setShow.bind(this)}>移除管理者</Button>
-                    <Button className="fs-6 btn py-1 mx-1" data-bs-toggle="modal" data-bs-target="#delModal">刪除</Button>
+                    {/* 移除管理者 */}
+                    <RemoveModal />
+                    {/* 刪除 */}
+                    <DeleteModal/>
                 </div>
-                <Modal
-                    id={"removeModal"}
-                    size={"lg"}
-                    show={this.state.showModal}
-                    onHide={this.setClose.bind(this)}
-                    backdrop="static"
-                    keyboard={false}
-                    className="modal fade"
-                >
-                    <Modal.Header>
-                        model
-                        <CloseButton onClick={this.setClose.bind(this)}></CloseButton>
-                    </Modal.Header>
-                    <Modal.Body>
-                        123
-                    </Modal.Body>
-                </Modal>
 
-                
+
             </Col>
         );
     }

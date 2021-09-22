@@ -1,0 +1,60 @@
+#footer {
+    position: fixed;
+    height: 10vh;
+    background: #74B8C1;
+    opacity: 0.95;
+}
+
+#Scanleave_list{
+    background-color: #74B8C1;
+    height: 72vh;
+    border-radius: 0.5rem;
+}
+#Scanleave_listitem{
+    overflow-x: hidden;
+    height: 64vh;
+}
+#Scanleave_content .classdetails {
+    background-color: #FFFFFF;
+    color: #17646F;
+    border: solid 1px #ffffff;
+    border-radius: 0.5rem;
+    /* font-size: large; */
+}
+
+/* scrollbar */
+/* width */
+#Scanleave_listitem::-webkit-scrollbar {
+    position: relative;
+    width: 10px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+/* Track */
+#Scanleave_listitem::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(187, 182, 182);
+    border-radius: 3px;
+}
+/* Handle */
+#Scanleave_listitem::-webkit-scrollbar-thumb {
+    background: #187685;
+    border-radius: 3px;
+    position: relative;
+}
+/* Handle on hover */
+#Scanleave_listitem::-webkit-scrollbar-thumb:hover {
+    background: #187685;
+}
+
+@media screen and (max-width:576px) {
+    .sm_close{
+        display: none;
+    }
+    #Scanleave_listitem::-webkit-scrollbar,
+    #Scanleave_listitem::-webkit-scrollbar-track,
+    #Scanleave_listitem::-webkit-scrollbar-thumb,
+    #Scanleave_listitem::-webkit-scrollbar-thumb:hover {
+        width: 0px;
+        background: none;
+    }
+}

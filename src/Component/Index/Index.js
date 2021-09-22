@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Modal } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
@@ -33,45 +33,44 @@ class Index extends Component {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
-        }).then(res => { 
+        }).then(res => {
             res.data.data.forEach(records => {
-                switch(true) {
-                    case records.Status==='已過期':
+                switch (true) {
+                    case records.Status === '已過期':
                         this.setState({
-                            expired_0:records.CheckDetails
+                            expired_0: records.CheckDetails
                         });
                         break;
-                    case records.Status==='一日內過期':
+                    case records.Status === '一日內過期':
                         this.setState({
-                            expired_1:records.CheckDetails
+                            expired_1: records.CheckDetails
                         });
                         break;
-                    case records.Status==='三日內過期':
+                    case records.Status === '三日內過期':
                         this.setState({
-                            expired_3:records.CheckDetails
+                            expired_3: records.CheckDetails
                         });
                         break;
+                    default:
                 }
             });
-        })
-        .catch(err => {
+        }).catch(err => {
             localStorage.clear();
             const history = useHistory();
             history.push(`/`)
         });
     }
 
-    
     render() {
         return (
             <Row id="content" className="m-0 p-0 container-fluid">
-               
+
                 {/* Left Navigation  */}
                 <Col xs={12} sm={5} id="Navigation" className="pe-sm-4 pe-2">
                     <div className="d-flex flex-column h-100">
                         <div className="h-25 mb-2">
-                            <div id="Scan" class="btn d-flex w-100 h-100">
-                                <Link to="/Signin" style={{ textDecoration: 'none' }} className="my-auto">
+                            <div id="Scan" className="btn d-flex w-100 h-100">
+                                <Link to="/Scan" style={{ textDecoration: 'none' }} className="my-auto">
                                     <div className="contentBox">
                                         <div className="clicktxt text-white">品保查檢</div>
                                         <div className="img_Container">
@@ -84,7 +83,7 @@ class Index extends Component {
                         <div className="minor d-flex flex-column justify-content-between h-100">
                             <div className="d-flex h-100">
                                 <div id="Record" className="btn d-flex justify-content-center">
-                                    <Link to="/Management" style={{ textDecoration: 'none' }} className="my-auto">
+                                    <Link to="/ListNsearch" style={{ textDecoration: 'none' }} className="my-auto">
                                         <div className="contentBox">
                                             <div className="clicktxt align-self-center">品保紀錄</div>
                                             <div className="img_Container align-self-center">
@@ -104,30 +103,30 @@ class Index extends Component {
                                     </Link>
                                 </div>
                             </div>
-                            { this.state.role==='admin' ? 
-                            <div className="d-flex h-100">
-                                <div id="Management" className="btn d-flex justify-content-center">
-                                    <Link to="/Management" style={{ textDecoration: 'none' }} className="my-auto">
-                                        <div className="contentBox">
-                                            <div className="clicktxt">人員管理</div>
-                                            <div className="img_Container">
-                                                <img className="picture" src={g_management} alt="g_management" />
+                            {this.state.role === 'admin' ?
+                                <div className="d-flex h-100">
+                                    <div id="Management" className="btn d-flex justify-content-center">
+                                        <Link to="/Managment" style={{ textDecoration: 'none' }} className="my-auto">
+                                            <div className="contentBox">
+                                                <div className="clicktxt">人員管理</div>
+                                                <div className="img_Container">
+                                                    <img className="picture" src={g_management} alt="g_management" />
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Link>
-                                </div>
-    
-                                <div id="Controls" className="btn d-flex justify-content-center">
-                                    <Link to="/Management" style={{ textDecoration: 'none' }} className="my-auto">
-                                        <div className="contentBox">
-                                            <div className="clicktxt">提醒管理</div>
-                                            <div className="img_Container">
-                                                <img className="picture" src={g_controls} alt="g_controls" />
+                                        </Link>
+                                    </div>
+
+                                    <div id="Controls" className="btn d-flex justify-content-center">
+                                        <Link to="/controls" style={{ textDecoration: 'none' }} className="my-auto">
+                                            <div className="contentBox">
+                                                <div className="clicktxt">提醒管理</div>
+                                                <div className="img_Container">
+                                                    <img className="picture" src={g_controls} alt="g_controls" />
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            </div> : null}
+                                        </Link>
+                                    </div>
+                                </div> : null}
                         </div>
                     </div>
                 </Col>
@@ -142,26 +141,26 @@ class Index extends Component {
                         <div className="listWrapper mb-2 h-100">
                             <div className="title expired text-center">已過期</div>
                             <div className="list bg-white mx-3">
-                                { this.state.expired_0 ? this.state.expired_0.map(detail=><Item detail={detail}/>) : ''}
+                                {this.state.expired_0 ? this.state.expired_0.map((detail,index) => <Item detail={detail} key={index} />) : ''}
                             </div>
                         </div>
-    
+
                         <div className="listWrapper mb-2 h-100">
                             <div className="title oneday text-center">一天內過期</div>
                             <div className="list bg-white mx-3">
-                                { this.state.expired_1 ? this.state.expired_1.map(detail=><Item detail={detail}/>) : ''}
+                                {this.state.expired_1 ? this.state.expired_1.map((detail,index) => <Item detail={detail} key={index} />) : ''}
                             </div>
                         </div>
-    
+
                         <div className="listWrapper mb-2 h-100">
                             <div className="title threeday text-center">三天內過期</div>
                             <div className="list bg-white mx-3">
-                                { this.state.expired_3 ? this.state.expired_3.map(detail=><Item detail={detail}/>) : ''}
+                                {this.state.expired_3 ? this.state.expired_3.map((detail,index) => <Item detail={detail} key={index} />) : ''}
                             </div>
                         </div>
-    
+
                     </div>
-    
+
                 </Col>
             </Row>
         );

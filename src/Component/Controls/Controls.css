@@ -1,0 +1,118 @@
+#back {
+    width: 3vw;
+    min-height: 33px;
+    min-width: 33px;
+}
+
+#edit {
+    max-height: 25px;
+    max-width: 25px;
+}
+
+#Controls_content .top {
+    margin: 0% 2%;
+}
+
+#Controls_content .mid {
+    margin: 0% 4%;
+}
+
+#Controls_content .title {
+    color: #17646F;
+    border-bottom: solid 2px #17646F;
+    text-align: center;
+}
+
+#Controls_list {
+    overflow-x: hidden;
+    height: 65vh;
+}
+
+.listitem {
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+}
+
+#Controls2 {
+    background-color: #74B8C1;
+    border-radius: 8px;
+    border: solid 1px #17646F;
+    height: 75vh;
+    /* margin: 0 1% 3% 1%; */
+}
+
+/* scrollbar */
+/* width */
+#Controls_list::-webkit-scrollbar {
+    position: relative;
+    width: 10px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+/* Track */
+#Controls_list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(187, 182, 182);
+    border-radius: 3px;
+}
+
+/* Handle */
+#Controls_list::-webkit-scrollbar-thumb {
+    background: #187685;
+    border-radius: 3px;
+    position: relative;
+}
+
+/* Handle on hover */
+#Controls_list::-webkit-scrollbar-thumb:hover {
+    background: #187685;
+}
+
+/* Modal */
+#Controls_Modal .modal-content {
+    margin: 10% 0% 0% 0%;
+    background-color: #FFFFFF;
+    opacity: 0.95;
+    border-radius: 8px;
+    border: solid 3px #17646F;
+    color: #17646F;
+}
+
+#Controls_Modal .modal-header {
+    background: #8FC6CD;
+    font-size: 30px;
+    color: white;
+}
+
+#Controls_Modal .modal-body {
+    padding: 30px 30px;
+    font-size: x-large;
+}
+
+#Controls_Modal input {
+    border: solid 1px #e2e2e2;
+    font-size: 20px;
+    height: 6vh;
+    width: 8vh;
+}
+
+/* #Controls_Modal .upNdown {
+    border: none;
+    background-color: white;
+} */
+
+#Controls_Modal .cancel {
+    border: solid 2px #FFFFFF;
+    background-color: #598F97;
+    color: #FFFFFF;
+    border-radius: 8px;
+    width: 15vh;
+}
+
+#Controls_Modal .confirm {
+    border: solid 2px #FFFFFF;
+    background-color: #D26666;
+    color: #FFFFFF;
+    border-radius: 8px;
+    width: 15vh;
+}

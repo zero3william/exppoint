@@ -4,15 +4,15 @@
     min-width: 33px;
 }
 
-.top {
-    margin: 2% 4%;
+#Statistics_content .top {
+    margin: 0 2%;
 }
 
-.mid {
-    margin: 0 4%;
+#Statistics_content .mid {
+    margin: 0 2%;
 }
 
-.top .title {
+#Statistics_content .title {
     color: #17646F;
     border-bottom: solid 2px #17646F;
     text-align: center;
@@ -22,14 +22,14 @@
     margin: 2% 0;
 }
 
-#left {
+#Statistics_left {
     /* background-color: #dacfc6; */
     height: 73vh;
     margin: 0 1% 3% 1%;
     border-radius: 0.8rem;
 }
 
-#right #list {
+#Statistics_right #Statistics_list {
     overflow-x: hidden;
     height: 62vh;
     margin: 0 0 2% 0;
@@ -56,7 +56,7 @@
     height: auto;
 }
 
-#right,
+#Statistics_right,
 #after {
     background-color: #8FC6CD;
     height: 73vh;
@@ -66,7 +66,7 @@
 }
 
 #after {
-    display: none;
+    /* display: none; */
 }
 
 .items {
@@ -75,10 +75,11 @@
     padding: 2% 5%;
 }
 
-.classitems {
+.Statistics_details .classitems {
     color: #17646F;
     border: solid 2px #b3b3b3;
     border-radius: 0.8rem;
+    background-color: #ececec;
 }
 
 .cue .cir {
@@ -98,7 +99,7 @@
     align-self: center;
 }
 
-.num {
+.Statistics_details .num {
     color: #17646F;
     padding: 0 10% 0 0;
 }
@@ -128,7 +129,7 @@
     color: #187685;
 }
 
-#back_btn {
+#after #back_btn {
     background-color: white;
     color: #17646F;
     border-radius: 0.25rem;
@@ -136,14 +137,14 @@
     align-self: center;
 }
 
-#back_btn span {
+#after #back_btn span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
 }
 
-#back_btn span:after {
+#after #back_btn span:after {
     content: '<';
     position: absolute;
     opacity: 0;
@@ -152,11 +153,11 @@
     transition: 0.5s;
 }
 
-#back_btn:hover span {
+#after #back_btn:hover span {
     padding-left: 15px;
 }
 
-#back_btn:hover span:after {
+#after #back_btn:hover span:after {
     opacity: 1;
     left: 0;
 }
@@ -195,7 +196,7 @@ path {
 /* scrollbar */
 
 /* width */
-#right #list::-webkit-scrollbar {
+#Statistics_list::-webkit-scrollbar {
     position: relative;
     width: 10px;
     background-color: #FFFFFF;
@@ -203,20 +204,20 @@ path {
 }
 
 /* Track */
-#right #list::-webkit-scrollbar-track {
+#Statistics_list::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px rgb(187, 182, 182);
     border-radius: 3px;
 }
 
 /* Handle */
-#right #list::-webkit-scrollbar-thumb {
+#Statistics_list::-webkit-scrollbar-thumb {
     background: #187685 !important;
     border-radius: 3px;
     position: relative;
 }
 
 /* Handle on hover */
-#right #list::-webkit-scrollbar-thumb:hover {
+#Statistics_list::-webkit-scrollbar-thumb:hover {
     background: #187685 !;
 }
 
