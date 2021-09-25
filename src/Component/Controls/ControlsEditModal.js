@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Modal, Button, Col } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
 
 import g_edit from '../../assets/images/g-edit.png'
 import g_triangle from '../../assets/images/g-triangle.png'

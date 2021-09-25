@@ -22,7 +22,7 @@ const parseJwt = (token) => {
 const AuthRoute = propsWithType => {
     let isLogin = false;
 
-    const { type, ...props } = propsWithType;
+    const { type, role, ...props } = propsWithType;
 
     if(localStorage.getItem('token')) {
         const token = localStorage.getItem('token');
@@ -36,9 +36,11 @@ const AuthRoute = propsWithType => {
     }
 
     if (type==="guest" && isLogin) {
-        return <Redirect to="/index" />
+        return <Redirect to="/index" />;
     } else if (type==="private" && !isLogin) {
         return <Redirect to="/" />;
+    } else if (role==="admin" && localStorage.getItem('Role')!=='admin') {
+        return <Redirect to="/index" />;
     }
 
     return <Route {...props} />;

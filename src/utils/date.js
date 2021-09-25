@@ -1,16 +1,16 @@
 export default {
-    now: ()=>{
-        const now = new Date();
+    dateString: (timestamp)=>{
+        const now = new Date(timestamp ? timestamp : null);
         const year = now.getFullYear();
         const month = now.getMonth()+1;
         const date = now.getDate();
-        return `${year}-${month<10 ? '0'+month : month}-${date}`;
+        return `${year}-${month<10 ? '0'+month : month}-${date<10 ? '0'+date : date}`;
     },
-    expiredInDays: (now,expired)=>{
-        const nowTimestamp = Date.parse(now);
-        const expiredTimestamp = Date.parse(expired);
-        const diffTime = expiredTimestamp-nowTimestamp;
-        const expiredInDays = Math.ceil(diffTime/86400000);
-        return expiredInDays;
+    nDaysAway: (dateA,dateB)=>{
+        const dateATimestamp = Date.parse(dateA);
+        const dateBTimestamp = Date.parse(dateB);
+        const diffTime = dateBTimestamp-dateATimestamp;
+        const nDaysAway = diffTime/86400000;
+        return nDaysAway;
     }
 }

@@ -70,7 +70,7 @@ class Index extends Component {
                     <div className="d-flex flex-column h-100">
                         <div className="h-25 mb-2">
                             <div id="Scan" className="btn d-flex w-100 h-100">
-                                <Link to="/Scan" style={{ textDecoration: 'none' }} className="my-auto">
+                                <Link to="/scan" style={{ textDecoration: 'none' }} className="my-auto">
                                     <div className="contentBox">
                                         <div className="clicktxt text-white">品保查檢</div>
                                         <div className="img_Container">
@@ -83,7 +83,7 @@ class Index extends Component {
                         <div className="minor d-flex flex-column justify-content-between h-100">
                             <div className="d-flex h-100">
                                 <div id="Record" className="btn d-flex justify-content-center">
-                                    <Link to="/ListNsearch" style={{ textDecoration: 'none' }} className="my-auto">
+                                    <Link to="/listNsearch" style={{ textDecoration: 'none' }} className="my-auto">
                                         <div className="contentBox">
                                             <div className="clicktxt align-self-center">品保紀錄</div>
                                             <div className="img_Container align-self-center">
@@ -93,7 +93,7 @@ class Index extends Component {
                                     </Link>
                                 </div>
                                 <div id="Chart" className="btn d-flex justify-content-center">
-                                    <Link to="/Statistics" style={{ textDecoration: 'none' }} className="my-auto">
+                                    <Link to="/statistics" style={{ textDecoration: 'none' }} className="my-auto">
                                         <div className="contentBox">
                                             <div className="clicktxt">統計圖表</div>
                                             <div className="img_Container">
@@ -106,7 +106,7 @@ class Index extends Component {
                             {this.state.role === 'admin' ?
                                 <div className="d-flex h-100">
                                     <div id="Management" className="btn d-flex justify-content-center">
-                                        <Link to="/Managment" style={{ textDecoration: 'none' }} className="my-auto">
+                                        <Link to="/managment" style={{ textDecoration: 'none' }} className="my-auto">
                                             <div className="contentBox">
                                                 <div className="clicktxt">人員管理</div>
                                                 <div className="img_Container">

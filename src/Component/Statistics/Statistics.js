@@ -1,11 +1,127 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
-
 import './Statistics.css';
 import Collapse from './Collapse.js';
-
-import back from '../../assets/images/g-button.png'
+import axios from 'axios';
+import Chart from 'chart.js/auto';
+import back from '../../assets/images/g-button.png';
+import DateUtil from '../../utils/date';
+import { Link } from 'react-router-dom';
 class Statistics extends Component {
+    constructor(props) {
+        super(props);
+
+        this.chart = null;
+
+        this.state = {
+            statistics: []
+        }
+    }
+
+    componentDidMount() {
+        this.getStatistics('month');
+    }
+
+    onSelect = (e)=>{
+        this.getStatistics(e.target.value);
+    }
+
+    getStatistics = (str)=>{
+        const colorArr = ['#f85672','#f09f3d','#f3e852','#adf16d','#0daeff'];
+
+        axios.get('/statistics/'+str, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(res => {
+            let labels = [];
+            let datasets = [];
+
+            res.data.data.forEach((main,mainIndex) => {
+                const mainTitle = main.MainType;
+                let data = [];
+                main.SubTypes.forEach(sub => {
+                    const subTitle = sub.SubType;
+                    sub.Items.forEach(item=>{
+                        const name = item.Item_Name;
+                        item.Records.forEach(record=>{
+                            const amount = record.Amount;
+                            const date = record.CheckTime.split(' ')[0];
+                            const labelIndex = labels.indexOf(date);
+                            if(labels.length===0) {
+                                labels.push(date);
+                                data.push(amount);
+                            } else if(labelIndex<0) {
+                                const daysAway = DateUtil.nDaysAway(date,labels[0]);
+                                if(daysAway>0) {
+                                    for(let i=daysAway-1;i>0;i--) {
+                                        labels.splice(0,0,DateUtil.dateString(Date.parse(date)+86400000*i));
+                                        data.splice(0,0,0);
+                                    }
+                                    labels.splice(0,0,date);
+                                    data.splice(0,0,amount);
+                                } else {
+                                    const daysAway = DateUtil.nDaysAway(labels[labels.length-1],date);
+                                    for(let i=1;i<daysAway;i++) {
+                                        labels.push(DateUtil.dateString(Date.parse(date)-86400000*(daysAway-i)));
+                                        data.push(0);
+                                    }
+                                    labels.push(date);
+                                    data.push(amount);
+                                }
+                            } else {
+                                data[labelIndex]+=amount;
+                            }
+                        });
+                    });
+                });
+                datasets.push({
+                    label: mainTitle,
+                    backgroundColor: colorArr[mainIndex], 
+                    borderColor: colorArr[mainIndex],
+                    data,
+                })
+            });
+
+            datasets = datasets.sort((a,b)=>{
+                const aSum = a.data.length===0 ? 0 : a.data.reduce((a1,a2)=>a1+a2);
+                const bSum = b.data.length===0 ? 0 : b.data.reduce((b1,b2)=>b1+b2);
+                return aSum > bSum ? -1 : 0;
+            });
+
+            this.setState({
+                statistics: datasets.map(data=>{
+                    const index = res.data.data.findIndex(main=>main.MainType===data.label);
+                    return res.data.data[index];
+                })
+            });
+
+            labels = labels.map(date=>date.split('-').splice(1,2).join('-'));
+            const ctx = document.getElementById('chartroot'); 
+            if(this.chart) this.chart.destroy();
+            this.chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: datasets.splice(0,5)
+                },
+                options: {
+                    scales: {
+                        y: {
+                            ticks: {
+                                beginAtZero: true,
+                                callback: value=>value%1===0 ? value : null
+                            }
+                        }
+                    }
+                }
+            });
+        }).catch(err => {
+            localStorage.clear();
+            window.location.href = '/'
+        });
+    }
 
     render() {
         return (
@@ -13,7 +129,7 @@ class Statistics extends Component {
                 {/* Top */}
                 <Row className="top d-flex lh-base align-items-center pt-4 mb-2">
                     <Col xs={1} className="d-flex justify-content-center">
-                        <img id="back" src={back} alt="back_btn" />
+                        <Link to="/"><img id="back" src={back} alt="back_btn" /></Link>   
                     </Col>
                     <Col className="title me-sm-5 me-1 py-1 fs-2">
                         統計圖表
@@ -26,7 +142,7 @@ class Statistics extends Component {
                         {/* 下拉式選單 */}
                         <Col id="options" className="d-flex justify-content-center w-75 text-center mt-2">
                             <Col>
-                                <select className="form-select" defaultValue="month">
+                                <select className="form-select" defaultValue="month" onChange={this.onSelect}>
                                     <option value="month">一個月</option>
                                     <option value="week">一週</option>
                                 </select>
@@ -34,40 +150,8 @@ class Statistics extends Component {
                         </Col>
                         <Row className="mt-2">
                             {/* 圖示 */}
-                            <div className="chart-title d-flex justify-content-center">
-                                <Col className="mark text-center mx-auto" id="cue1" style={{ backgroundColor: "#ffffff" }}>
-                                    <div className="d-block d-sm-flex text-center mx-auto align-self-center justify-content-center">
-                                        <div className="cue1-mark circle align-self-center mx-sm-1 mx-auto"></div>
-                                        冷凍食品
-                                    </div>
-                                </Col>
-                                <Col className="mark text-center mx-auto" id="cue2" style={{ backgroundColor: "#ffffff" }}>
-                                    <div className="d-block d-sm-flex text-center mx-auto align-self-center justify-content-center">
-                                        <div className="cue2-mark circle align-self-center mx-sm-1 mx-auto"></div>
-                                        飲料
-                                    </div>
-                                </Col>
-                                <Col className="mark text-center mx-auto" id="cue3" style={{ backgroundColor: "#ffffff" }}>
-                                    <div className="d-block d-sm-flex text-center mx-auto align-self-center justify-content-center">
-                                        <div className="cue3-mark circle align-self-center mx-sm-1 mx-auto"></div>
-                                        泡麵
-                                    </div>
-                                </Col>
-                                <Col className="mark text-center mx-auto" id="cue4" style={{ backgroundColor: "#ffffff" }}>
-                                    <div className="d-block d-sm-flex text-center mx-auto align-self-center justify-content-center">
-                                        <div className="cue4-mark circle align-self-center mx-sm-1 mx-auto"></div>
-                                        零食
-                                    </div>
-                                </Col>
-                                <Col className="mark text-center mx-auto" id="cue5" style={{ backgroundColor: "#ffffff" }}>
-                                    <div className="d-block d-sm-flex text-center mx-auto align-self-center justify-content-center">
-                                        <div className="cue5-mark circle align-self-center mx-sm-1 mx-auto"></div>
-                                        餅乾
-                                    </div>
-                                </Col>
-                            </div>
                             {/* 折線圖 */}
-                            <div id="chartroot" className="d-flex justify-content-center"></div>
+                            <canvas id="chartroot" className="d-flex justify-content-center"></canvas>
                         </Row>
                     </Col>
                     {/* click item before */}
@@ -82,10 +166,7 @@ class Statistics extends Component {
                         </Col>
 
                         <Col id="Statistics_list">
-                            <Collapse />
-                            <Collapse />
-                            <Collapse />
-                            <Collapse />
+                            {this.state.statistics.map(data=><Collapse data={data} key={data.MainType} />)}
                         </Col>
                     </Col>
 

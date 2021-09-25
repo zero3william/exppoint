@@ -15,9 +15,11 @@ const Header = () => {
     const [open, setOpen] = useState(false);
 
     const signout = () => {
-        console.log('sign out')
-        localStorage.clear();
-        history.push(`/`)
+        if(open) {
+            console.log('sign out')
+            localStorage.clear();
+            history.push(`/`)
+        }
     }
 
     const Username = localStorage.getItem('Username');

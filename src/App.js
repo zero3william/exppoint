@@ -47,12 +47,12 @@ const App = () => {
                     <Statistics />
                 </AuthRoute>
                 {/* 人員管理 */}
-                <AuthRoute path="/managment" type="private">
+                <AuthRoute path="/managment" type="private" role="admin">
                     <Header />
                     <Managment />
                 </AuthRoute>
                 {/* 提醒管理 */}
-                <AuthRoute path="/controls" type="private">
+                <AuthRoute path="/controls" type="private" role="admin">
                     <Header />
                     <Controls />
                 </AuthRoute>
