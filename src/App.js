@@ -10,6 +10,7 @@ import Scan from './Component/Scan/Scan';
 import Scanleave from './Component/Scanleave/Scanleave';
 import Controls from './Component/Controls/Controls';
 import ListNsearch from './Component/ListNsearch/ListNsearch';
+import List from './Component/List/List';
 import Statistics from './Component/Statistics/Statistics';
 import Managment from './Component/Managment/Managment';
 import {
@@ -40,6 +41,11 @@ const App = () => {
                 <AuthRoute path="/listNsearch" type="private">
                     <Header />
                     <ListNsearch />
+                </AuthRoute>
+                {/* 品保紀錄 */}
+                <AuthRoute path="/list" type="private">
+                    <Header />
+                    <List/>
                 </AuthRoute>
                 {/* 統計圖表 */}
                 <AuthRoute path="/statistics" type="private">

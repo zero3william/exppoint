@@ -21,7 +21,7 @@ function ControlsEditModal() {
                 <Modal.Body>
                     <div className="d-block d-sm-flex my-3">
                         <div className="justify-content-start justify-sm-content-center" style={{display: "inline"}}>類別：</div>
-                        <div className="text-start text-sm-start" style={{display: "inline"}}>乳製品</div>
+                        <div className="text-start text-sm-start" style={{display: "inline"}}>4°C冰藏飲品 豆漿</div>
                     </div>
                     <div className="d-flex my-3 my-auto">
                         <Col xs={8} sm className="justify-content-start justify-sm-content-center my-auto">到期前天數：</Col>

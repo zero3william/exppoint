@@ -35,27 +35,7 @@ class Controls extends Component {
                         </Row>
                         <div id="Controls_list">
                             <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">乳製品</Col>
-                                <Col xs={5} className="d-flex justify-content-center">5</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">乳製品</Col>
-                                <Col xs={5} className="d-flex justify-content-center">1</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">乳製品</Col>
+                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 豆漿</Col>
                                 <Col xs={5} className="d-flex justify-content-center">2</Col>
 
                                 <Col xs={3} className="d-flex justify-content-center">
@@ -65,8 +45,8 @@ class Controls extends Component {
                                 </Col>
                             </Row>
                             <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">餅乾</Col>
-                                <Col xs={5} className="d-flex justify-content-center">10</Col>
+                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 鮮乳</Col>
+                                <Col xs={5} className="d-flex justify-content-center">2</Col>
 
                                 <Col xs={3} className="d-flex justify-content-center">
                                     {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
@@ -75,7 +55,17 @@ class Controls extends Component {
                                 </Col>
                             </Row>
                             <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">罐頭</Col>
+                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 調味乳</Col>
+                                <Col xs={5} className="d-flex justify-content-center">2</Col>
+
+                                <Col xs={3} className="d-flex justify-content-center">
+                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
+                                     */}
+                                    <ControlsEditModal />
+                                </Col>
+                            </Row>
+                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
+                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 蔬果汁</Col>
                                 <Col xs={5} className="d-flex justify-content-center">5</Col>
 
                                 <Col xs={3} className="d-flex justify-content-center">
@@ -85,7 +75,7 @@ class Controls extends Component {
                                 </Col>
                             </Row>
                             <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">瓶裝飲料</Col>
+                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 茶類</Col>
                                 <Col xs={5} className="d-flex justify-content-center">5</Col>
 
                                 <Col xs={3} className="d-flex justify-content-center">
@@ -95,7 +85,7 @@ class Controls extends Component {
                                 </Col>
                             </Row>
                             <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">糖果</Col>
+                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 限定系列</Col>
                                 <Col xs={5} className="d-flex justify-content-center">5</Col>
 
                                 <Col xs={3} className="d-flex justify-content-center">
@@ -104,28 +94,6 @@ class Controls extends Component {
                                     <ControlsEditModal />
                                 </Col>
                             </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">乳製品</Col>
-                                <Col xs={5} className="d-flex justify-content-center">5</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">乳製品</Col>
-                                <Col xs={5} className="d-flex justify-content-center">5</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-
-
                         </div>
                     </Col>
                 </Row>
