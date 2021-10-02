@@ -1,226 +1,224 @@
 #back {
-    width: 3vw;
-    min-height: 33px;
-    min-width: 33px;
+  width: 3vw;
+  min-height: 33px;
+  min-width: 33px;
+  cursor: pointer;
 }
 
 #Statistics_content .top {
-    margin: 0 2%;
+  margin: 0 2%;
 }
 
 #Statistics_content .mid {
-    margin: 0 2%;
+  margin: 0 2%;
 }
 
 #Statistics_content .title {
-    color: #17646F;
-    border-bottom: solid 2px #17646F;
-    text-align: center;
+  color: #17646f;
+  border-bottom: solid 2px #17646f;
+  text-align: center;
 }
 
 .listtitle {
-    margin: 2% 0;
+  margin: 2% 0;
 }
 
 #Statistics_left {
-    /* background-color: #dacfc6; */
-    height: 73vh;
-    margin: 0 1% 3% 1%;
-    border-radius: 0.8rem;
+  /* background-color: #dacfc6; */
+  height: 73vh;
+  margin: 0 1% 3% 1%;
+  border-radius: 0.8rem;
 }
 
 #Statistics_right #Statistics_list {
-    overflow-x: hidden;
-    height: 62vh;
-    margin: 0 0 2% 0;
+  overflow-x: hidden;
+  height: 62vh;
+  margin: 0 0 2% 0;
 }
 
 .down {
-    width: 25px;
-    height: 25px;
-    padding: 0;
-    align-self: center;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  align-self: center;
 }
 
 .down2 {
-    width: 25px;
-    height: 25px;
-    padding: 0;
-    align-self: center;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  align-self: center;
 }
 
 .cue {
-    border: solid 2px #dacfc6;
-    /* background-color: #dacfc6; */
-    border-radius: 0.8rem;
-    height: auto;
+  border: solid 2px #dacfc6;
+  /* background-color: #dacfc6; */
+  border-radius: 0.8rem;
+  height: auto;
 }
 
 #Statistics_right,
 #after {
-    background-color: #8FC6CD;
-    height: 73vh;
-    margin: 0 1% 3% 1%;
-    border-radius: 0.8rem;
-    /* display: none; */
+  background-color: #8fc6cd;
+  height: 73vh;
+  margin: 0 1% 3% 1%;
+  border-radius: 0.8rem;
+  /* display: none; */
 }
 
 #after {
-    /* display: none; */
+  /* display: none; */
 }
 
 .items {
-    background-color: #FFFFFF;
-    border-radius: 0.5rem;
-    padding: 2% 5%;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2% 5%;
 }
 
 .Statistics_details .classitems {
-    color: #17646F;
-    border: solid 2px #b3b3b3;
-    border-radius: 0.8rem;
-    background-color: #ececec;
+  color: #17646f;
+  border: solid 2px #b3b3b3;
+  border-radius: 0.8rem;
+  background-color: #ececec;
 }
 
 .cue .cir {
-    width: 25px;
-    height: 25px;
-    background-color: #81d7e4;
-    border-radius: 1.5rem;
-    margin: 0 5px 0 0;
-    align-self: center;
-    /* align-self: center; */
+  width: 25px;
+  height: 25px;
+  background-color: #81d7e4;
+  border-radius: 1.5rem;
+  margin: 0 5px 0 0;
+  align-self: center;
+  /* align-self: center; */
 }
 
 .cueitem {
-    margin: 1%;
-    color: rgb(51, 48, 42);
-    display: inline-block;
-    align-self: center;
+  margin: 1%;
+  color: rgb(51, 48, 42);
+  display: inline-block;
+  align-self: center;
 }
 
 .Statistics_details .num {
-    color: #17646F;
-    padding: 0 10% 0 0;
+  color: #17646f;
+  padding: 0 10% 0 0;
 }
 
 #options {
-    margin: auto;
+  margin: auto;
 }
 
 #finallist {
-    overflow-x: hidden;
-    height: 62vh;
-    /* margin: 0 3%; */
+  overflow-x: hidden;
+  height: 62vh;
+  /* margin: 0 3%; */
 }
 
 .finalitems {
-    background-color: #FFFFFF;
-    border-radius: 0.5rem;
-    padding: 2% 0%;
-
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2% 0%;
 }
 
 .num2 {
-    color: #17646F;
+  color: #17646f;
 }
 
 #tot {
-    color: #187685;
+  color: #187685;
 }
 
 #after #back_btn {
-    background-color: white;
-    color: #17646F;
-    border-radius: 0.25rem;
-    border: none;
-    align-self: center;
+  background-color: white;
+  color: #17646f;
+  border-radius: 0.25rem;
+  border: none;
+  align-self: center;
 }
 
 #after #back_btn span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
 
 #after #back_btn span:after {
-    content: '<';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    left: -10px;
-    transition: 0.5s;
+  content: "<";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -10px;
+  transition: 0.5s;
 }
 
 #after #back_btn:hover span {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 #after #back_btn:hover span:after {
-    opacity: 1;
-    left: 0;
+  opacity: 1;
+  left: 0;
 }
 
 /* chart */
 path {
-    stroke: #81d7e4;
-    stroke-width: 2;
-    fill: none;
+  stroke: #81d7e4;
+  stroke-width: 2;
+  fill: none;
 }
 
 .axis {
-    font-size: 11px;
-    fill: rgb(18, 20, 19);
+  font-size: 11px;
+  fill: rgb(18, 20, 19);
 }
 
 .x.axis line {
-    stroke: rgba(199, 199, 199, 0.7);
+  stroke: rgba(199, 199, 199, 0.7);
 }
 
 .x.axis .minor {
-    stroke-opacity: .5;
+  stroke-opacity: 0.5;
 }
 
 .x.axis path {
-    stroke: #41372a;
+  stroke: #41372a;
 }
 
 .y.axis line,
 .y.axis path {
-    fill: none;
-    stroke: rgb(165, 71, 34);
+  fill: none;
+  stroke: rgb(165, 71, 34);
 }
-
 
 /* scrollbar */
 
 /* width */
 #Statistics_list::-webkit-scrollbar {
-    position: relative;
-    width: 10px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
+  position: relative;
+  width: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
 }
 
 /* Track */
 #Statistics_list::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(187, 182, 182);
-    border-radius: 3px;
+  box-shadow: inset 0 0 5px rgb(187, 182, 182);
+  border-radius: 3px;
 }
 
 /* Handle */
 #Statistics_list::-webkit-scrollbar-thumb {
-    background: #187685 !important;
-    border-radius: 3px;
-    position: relative;
+  background: #187685 !important;
+  border-radius: 3px;
+  position: relative;
 }
 
 /* Handle on hover */
 #Statistics_list::-webkit-scrollbar-thumb:hover {
-    background: #187685 !;
+  background: #187685 !;
 }
-
 
 /* @media screen and (min-width:576px) {
     #left{
@@ -228,169 +226,167 @@ path {
     }
 } */
 
-
 /* chart main */
 /* tooltip style */
 .d3-tip {
-    line-height: 1;
-    font-weight: bold;
-    padding: 12px;
-    background: #2b3c56;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 12px;
-    text-align: center;
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: #2b3c56;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 12px;
+  text-align: center;
 }
 
 .d3-tip .date {
-    text-align: center;
-    margin-bottom: 5px;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .d3-tip .mark {
-    display: inline-flex;
-    width: 4px;
-    height: 4px;
-    border-radius: 99%;
-    margin: 0;
-    vertical-align: middle;
-    margin-right: 3px;
+  display: inline-flex;
+  width: 4px;
+  height: 4px;
+  border-radius: 99%;
+  margin: 0;
+  vertical-align: middle;
+  margin-right: 3px;
 }
 
 .d3-tip .cue5-mark {
-    background-color: #0daeff;
+  background-color: #0daeff;
 }
 
 .d3-tip .cue1-mark {
-    background-color: #f85672;
+  background-color: #f85672;
 }
 
 .d3-tip .cue2-mark {
-    background-color: #f09f3d;
+  background-color: #f09f3d;
 }
 
 .d3-tip .cue4-mark {
-    background-color: #adf16d;
+  background-color: #adf16d;
 }
 
 .d3-tip .cue3-mark {
-    background-color: #f3e852;
+  background-color: #f3e852;
 }
 
 .d3-tip:after {
-    /* Creates a small triangle extender for the tooltip */
-    box-sizing: border-box;
-    display: inline-block;
-    font-size: 10px;
-    width: 16px;
-    height: 12px;
-    color: #2b3c56;
-    content: '\25BC';
-    position: absolute;
-    text-align: center;
+  /* Creates a small triangle extender for the tooltip */
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 10px;
+  width: 16px;
+  height: 12px;
+  color: #2b3c56;
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
 }
 
 .d3-tip.n:after {
-    /* Style northward tooltips differently */
-    left: 50%;
-    bottom: 4px;
-    -webkit-transform: translate(-50%, 100%);
-    transform: translate(-50%, 100%);
+  /* Style northward tooltips differently */
+  left: 50%;
+  bottom: 4px;
+  -webkit-transform: translate(-50%, 100%);
+  transform: translate(-50%, 100%);
 }
 
 /* chart container style */
 #chartroot {
-    /* width: 50%; */
-    overflow-x: hidden;
-    margin-top: 30px;
-    height: 57vh;
-    /* background-color: #0daeff; */
-
+  /* width: 50%; */
+  overflow-x: hidden;
+  margin-top: 30px;
+  height: 57vh;
+  /* background-color: #0daeff; */
 }
 
 /* scrollbar */
 
 /* width */
 #chartroot ::-webkit-scrollbar {
-    position: relative;
-    width: 10px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
+  position: relative;
+  width: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
 }
 
 /* Track */
 #chartroot ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(187, 182, 182);
-    border-radius: 3px;
+  box-shadow: inset 0 0 5px rgb(187, 182, 182);
+  border-radius: 3px;
 }
 
 /* Handle */
 #chartroot ::-webkit-scrollbar-thumb {
-    background: #7cc4cf;
-    border-radius: 3px;
-    position: relative;
+  background: #7cc4cf;
+  border-radius: 3px;
+  position: relative;
 }
 
 .chart-title {
-    margin: auto
+  margin: auto;
 }
 
 .mark {
-    display: -webkit-inline-box;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    /* margin-right: 30px; */
-    margin-top: 10px;
-    font-size: medium;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  /* margin-right: 30px; */
+  margin-top: 10px;
+  font-size: medium;
 }
 
 .circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 99%;
+  width: 20px;
+  height: 20px;
+  border-radius: 99%;
 }
 
 .cue1-mark {
-    background-color: #f85672;
+  background-color: #f85672;
 }
 
 .cue5-mark {
-    background-color: #0daeff;
+  background-color: #0daeff;
 }
 
 .cue2-mark {
-    background-color: #f09f3d;
+  background-color: #f09f3d;
 }
 
 .cue4-mark {
-    background-color: #adf16d;
+  background-color: #adf16d;
 }
 
 .cue3-mark {
-    background-color: #f3e852;
+  background-color: #f3e852;
 }
 
 /* chart style */
 .xaxis,
 .yaxis {
-    color: #334056;
-    opacity: 0.5;
+  color: #334056;
+  opacity: 0.5;
 }
 
 .xaxis line,
 .xaxis path,
 .yaxis line,
 .yaxis path {
-    stroke: #334056;
+  stroke: #334056;
 }
 
 .xaxis text,
 .yaxis text {
-    fill: #334056;
+  fill: #334056;
 }
 
 .line {
-    stroke-width: 2;
-    fill: none;
+  stroke-width: 2;
+  fill: none;
 }

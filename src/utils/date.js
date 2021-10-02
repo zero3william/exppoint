@@ -1,4 +1,4 @@
-export default {
+const dateUitl = {
     dateString: (timestamp)=>{
         const now = new Date(timestamp ? timestamp : null);
         const year = now.getFullYear();
@@ -14,3 +14,5 @@ export default {
         return nDaysAway;
     }
 }
+
+export default dateUitl;

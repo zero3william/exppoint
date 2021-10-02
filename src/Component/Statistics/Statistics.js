@@ -14,7 +14,9 @@ class Statistics extends Component {
         this.chart = null;
 
         this.state = {
-            statistics: []
+            statistics: [],
+            isMain: true,
+            subData: {}
         }
     }
 
@@ -42,9 +44,9 @@ class Statistics extends Component {
                 const mainTitle = main.MainType;
                 let data = [];
                 main.SubTypes.forEach(sub => {
-                    const subTitle = sub.SubType;
+                    // const subTitle = sub.SubType;
                     sub.Items.forEach(item=>{
-                        const name = item.Item_Name;
+                        // const name = item.Item_Name;
                         item.Records.forEach(record=>{
                             const amount = record.Amount;
                             const date = record.CheckTime.split(' ')[0];
@@ -154,8 +156,11 @@ class Statistics extends Component {
                             <canvas id="chartroot" className="d-flex justify-content-center"></canvas>
                         </Row>
                     </Col>
-                    {/* click item before */}
+                   
+                    {/* right */}
                     <Col xs={12} md id="Statistics_right">
+                    {this.state.isMain ? 
+                    <>
                         <Col className="listtitle d-flex justify-content-center text-white fs-5">
                             <Col className="d-flex justify-content-center text-white mt-1">
                                 分類
@@ -164,53 +169,33 @@ class Statistics extends Component {
                                 總數量
                             </Col>
                         </Col>
-
                         <Col id="Statistics_list">
-                            {this.state.statistics.map(data=><Collapse data={data} key={data.MainType} />)}
+                            {this.state.statistics.map(data=><Collapse data={data} key={data.MainType} sub={(subData)=>{this.setState({isMain:false,subData}); }} />)}
                         </Col>
+                    </>
+                    :
+                    <>
+                        <Col className="listtitle d-flex justify-content-between text-white fs-5">
+                            <img id="back" src={back} alt="back_btn" onClick={()=>{this.setState({isMain:true})}} />
+                            <div>{this.state.subData.title}</div> 
+                            <div>總數量:{this.state.subData.amount}</div>
+                        </Col>
+                        <div className="Statistics_details">
+                        {this.state.subData.items.map(data=>
+                        <div className="items fs-4 mx-2 mb-1" key={data.Item_Name}>
+                            <Row className="d-flex py-1" key={data.Item_Name}>
+                                <Col xs={10} className="name ps-4">{data.Item_Name}</Col>
+                                <Col xs={2} className="num text-end">{data.Records.reduce((a,b)=>a+b.Amount,0)}</Col>
+                            </Row>
+                        </div>   
+                        )}
+                        </div>
+                    </>
+
+                    }
+                        
                     </Col>
-
-                    {/* click item after */}
-                    {/* <Col xs={12} md id="after">
-                        <Row className="listtitle d-flex justify-content-center text-white fs-5 mt-2">
-                            <Col className="mt-1 d-flex">
-                                <button id="back_btn" className="fs-5"><span id="btntxt">返回</span></button>
-                            </Col>
-
-                            <Col className="itemname d-flex justify-content-center text-white align-self-center">
-                                茶裏王
-                            </Col>
-                            <Col className="d-flex justify-content-center text-white align-self-center">
-                                總數量：<div id="tot">4</div>
-                            </Col>
-                        </Row>
-                        <Row className="listtitle d-flex justify-content-center text-white fs-5">
-                            <Col className="d-flex justify-content-center text-white ">
-                                品名
-                            </Col>
-                            <Col className="d-flex justify-content-center text-white ">
-                                數量
-                            </Col>
-                        </Row>
-                        <Col id="finallist" className="fs-5">
-                            <Col className="finalitems d-flex justify-content-center fs-5 mx-2 mb-1">
-                                <Col className="d-flex justify-content-center name2">
-                                    無糖綠茶
-                                </Col>
-                                <Col className="d-flex justify-content-center num2">
-                                    3
-                                </Col>
-                            </Col>
-                            <Col className="finalitems d-flex justify-content-center fs-5 mx-2 mb-1">
-                                <Col className="d-flex justify-content-center name2">
-                                    綠茶
-                                </Col>
-                                <Col className="d-flex justify-content-center num2">
-                                    1
-                                </Col>
-                            </Col>
-                        </Col>
-                    </Col> */}
+       
                 </Row>
             </div>
         );

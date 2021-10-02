@@ -6,7 +6,32 @@ import './Controls.css';
 
 import back from '../../assets/images/g-button.png'
 import ControlsEditModal from './ControlsEditModal.js';
+import axios from 'axios';
 class Controls extends Component {
+    constructor(props) {
+        super(props);
+
+        this.chart = null;
+
+        this.state = {
+            list: []
+        }
+    }
+
+    componentDidMount() {
+        this.getList();
+    }
+
+    getList() {
+        axios.get('/category', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(res=>{
+            this.setState({list:res.data.data})
+        });
+    }
 
     render() {
         return (
@@ -34,66 +59,17 @@ class Controls extends Component {
                             <Col xs={3} className="d-flex justify-content-center"></Col>
                         </Row>
                         <div id="Controls_list">
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 豆漿</Col>
-                                <Col xs={5} className="d-flex justify-content-center">2</Col>
+                            {this.state.list.map(data=>{
+                                return <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center" key={data.Category_ID}>
+                                    <Col xs={4} className="d-flex justify-content-center">{data.Category_Sub}</Col>
+                                    <Col xs={5} className="d-flex justify-content-center">{data.Category_Alert}</Col>
 
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 鮮乳</Col>
-                                <Col xs={5} className="d-flex justify-content-center">2</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 調味乳</Col>
-                                <Col xs={5} className="d-flex justify-content-center">2</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 蔬果汁</Col>
-                                <Col xs={5} className="d-flex justify-content-center">5</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 茶類</Col>
-                                <Col xs={5} className="d-flex justify-content-center">5</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
-                            <Row className="listitem mx-md-2 mx-1 my-2 fs-3 justify-content-center">
-                                <Col xs={4} className="d-flex justify-content-center">4°C冰藏飲品 限定系列</Col>
-                                <Col xs={5} className="d-flex justify-content-center">5</Col>
-
-                                <Col xs={3} className="d-flex justify-content-center">
-                                    {/* <img id="edit" src={g_edit} alt="g_edit" className="my-auto"/>
-                                     */}
-                                    <ControlsEditModal />
-                                </Col>
-                            </Row>
+                                    <Col xs={3} className="d-flex justify-content-center">
+                                        <ControlsEditModal data={data} updateAlert={()=>{this.getList();}} />
+                                    </Col>
+                                </Row>
+                            })}
+                            
                         </div>
                     </Col>
                 </Row>
