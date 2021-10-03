@@ -176,9 +176,10 @@ class Statistics extends Component {
                     :
                     <>
                         <Col className="listtitle d-flex justify-content-between text-white fs-5">
-                            <img id="back" src={back} alt="back_btn" onClick={()=>{this.setState({isMain:true})}} />
-                            <div>{this.state.subData.title}</div> 
-                            <div>總數量:{this.state.subData.amount}</div>
+                            {/* <img id="back" src={back} alt="back_btn" onClick={()=>{this.setState({isMain:true})}} /> */}
+                            <Col className="mt-1 d-flex"><button id="back_btn" className="ms-2 fs-5" onClick={()=>{this.setState({isMain:true})}}><span id="btntxt">返回</span></button></Col>
+                            <Col className="itemname d-flex justify-content-center text-white align-self-center"><div>{this.state.subData.title}</div> </Col>
+                            <Col className="d-flex justify-content-center text-white align-self-center"><div>總數量:{this.state.subData.amount}</div></Col>
                         </Col>
                         <div className="Statistics_details">
                         {this.state.subData.items.map(data=>

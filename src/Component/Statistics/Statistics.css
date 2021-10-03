@@ -99,6 +99,11 @@
   display: inline-block;
   align-self: center;
 }
+.Statistics_details{
+  overflow-x: hidden;
+  max-height: 62vh;
+  margin: 0 0 2% 0;
+}
 
 .Statistics_details .num {
   color: #17646f;
@@ -129,7 +134,7 @@
   color: #187685;
 }
 
-#after #back_btn {
+#back_btn {
   background-color: white;
   color: #17646f;
   border-radius: 0.25rem;
@@ -137,14 +142,14 @@
   align-self: center;
 }
 
-#after #back_btn span {
+#back_btn span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-#after #back_btn span:after {
+#back_btn span:after {
   content: "<";
   position: absolute;
   opacity: 0;
@@ -153,11 +158,11 @@
   transition: 0.5s;
 }
 
-#after #back_btn:hover span {
+#back_btn:hover span {
   padding-left: 15px;
 }
 
-#after #back_btn:hover span:after {
+#back_btn:hover span:after {
   opacity: 1;
   left: 0;
 }
@@ -220,6 +225,31 @@ path {
   background: #187685 !;
 }
 
+/* Statistics_details */
+.Statistics_details::-webkit-scrollbar {
+  position: relative;
+  width: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+/* Track */
+.Statistics_details::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(187, 182, 182);
+  border-radius: 3px;
+}
+
+/* Handle */
+.Statistics_details::-webkit-scrollbar-thumb {
+  background: #187685 !important;
+  border-radius: 3px;
+  position: relative;
+}
+
+/* Handle on hover */
+.Statistics_details::-webkit-scrollbar-thumb:hover {
+  background: #187685 !;
+}
 /* @media screen and (min-width:576px) {
     #left{
         height: 100% !important;
