@@ -32,14 +32,15 @@ const Signin = () => {
                 }
             })
             .catch(err => {
-                if (err.response && err.respornse.data.status === "NG") {
-                    alert("帳號密碼錯誤")
-                    // alert(err.response.data.message)
-                    setLogin(false)
+                if (err.response.status===500) {
+                    alert(err.response.statusText)
+                } else if(err.response.data.status && err.response.data.status==="NG") {
+                    alert(err.response.data.message)
                 } else {
-                    alert("伺服器沒有回應")
+                    alert("Unknown Error")
                 }
-            })
+                setLogin(false)
+            });
 
     }
 

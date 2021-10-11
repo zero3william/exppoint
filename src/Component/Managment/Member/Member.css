@@ -1,26 +1,27 @@
 .cube {
-    color: #17646F;
-    border: solid 3px #17646F;
-    border-radius: 0.5rem;
-    min-width: 100%;
-    width: 100%;
-    /* margin: 0 2%;
+  color: #17646f;
+  border: solid 3px #17646f;
+  border-radius: 0.5rem;
+  min-width: 100%;
+  width: 100%;
+  /* margin: 0 2%;
     height: 30vh;
     min-height: 200px;
     max-height: 200px; */
-    height: 40px;
-    transition: all 0.3s ease-out;
+  height: 40px;
+  transition: all 0.3s ease-out;
+  overflow: hidden;
 }
 
 .cube2 {
-    color: #17646F;
-    border: solid 3px #17646F;
-    border-radius: 1rem;
-    width: 400px;
-    margin: 0 2%;
-    height: 30vh;
-    min-height: 200px;
-    max-height: 200px;
+  color: #17646f;
+  border: solid 3px #17646f;
+  border-radius: 1rem;
+  width: 400px;
+  margin: 0 2%;
+  height: 30vh;
+  min-height: 200px;
+  max-height: 200px;
 }
 
 /* .cube:active::after {
@@ -29,41 +30,43 @@
 } */
 
 .pic {
-    background-color: #d4d4d4;
-    border-radius: 0.5rem;
-    padding: 2%;
-    width: 100px;
-    height: 100px;
-    display: none;
-    transition: all 0.3s ease-out;
+  background-color: #d4d4d4;
+  border-radius: 0.5rem;
+  padding: 2%;
+  width: 100px;
+  height: 100px;
+  display: none;
+  transition: all 0.3s ease-out;
 }
 
 .edit {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
 }
 
 .editbtn {
-    background-color: rgba(0, 0, 255, 0) !important;
-    border: none !important;
+  background-color: rgba(0, 0, 255, 0) !important;
+  border: none !important;
 }
 
 /* .remove,
 .delete , */
 .btns button {
-    background-color: #6fa7af;
-    color: white;
-    border-radius: 0.25rem;
-    border: none;
-    align-self: center;
+  background-color: #6fa7af;
+  color: white;
+  border-radius: 0.25rem;
+  border: none;
+  align-self: center;
 }
 
-.btns,.detail {
-    display: none;
+.btns,
+.detail {
+  display: none;
 }
 
-.btns.active,.detail.active{
-    display: flex;
+.btns.active,
+.detail.active {
+  display: flex;
 }
 
 /* 
@@ -76,69 +79,65 @@
 
 .btns button:hover,
 .cancel:hover {
-    color: #FFFFFF;
-    background-color: #17646F;
-    transition: all 0.5s ease-out;
+  color: #ffffff;
+  background-color: #17646f;
+  transition: all 0.5s ease-out;
 }
 
-
-
 #add_member {
-    color: white;
-    background-color: #17646F;
-    border-radius: 0.25rem;
-    border: none;
-    align-self: center;
+  color: white;
+  background-color: #17646f;
+  border-radius: 0.25rem;
+  border: none;
+  align-self: center;
 }
 
 #add_member span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
 
 #add_member span:after {
-    content: '+';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    left: -10px;
-    transition: 0.5s;
+  content: "+";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -10px;
+  transition: 0.5s;
 }
 
 #add_member:hover span {
-    padding-left: 18px;
+  padding-left: 18px;
 }
 
 #add_member:hover span:after {
-    opacity: 1;
-    left: 0;
+  opacity: 1;
+  left: 0;
 }
 
-@media screen and (min-width:576px) {
+@media screen and (min-width: 576px) {
+  /* 管理者 */
+  .headtxt,
+  .headtxt2 {
+    min-width: 100px;
+    min-height: 200px;
+    max-height: 200px;
+    border-radius: 1rem;
+  }
 
-    /* 管理者 */
-    .headtxt,
-    .headtxt2 {
-        min-width: 100px;
-        min-height: 200px;
-        max-height: 200px;
-        border-radius: 1rem;
-    }
+  .cube {
+    min-width: 220px;
+    border-radius: 1rem;
+    width: 220px;
+    margin: 0 2%;
+    height: 30vh;
+    min-height: 200px;
+    max-height: 200px;
+  }
 
-    .cube {
-        min-width: 220px;
-        border-radius: 1rem;
-        width: 220px;
-        margin: 0 2%;
-        height: 30vh;
-        min-height: 200px;
-        max-height: 200px;
-    }
-
-    .pic {
-        display: block;
-    }
-
+  .pic {
+    display: block;
+  }
 }

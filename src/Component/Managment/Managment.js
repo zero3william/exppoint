@@ -8,8 +8,7 @@ import './Managment.css';
 import AddModal from './AddModal.js'
 
 import g_button from '../../assets/images/g-button.png'
-
-import MemberList from '../../assets/json/member.json'
+import axios from 'axios'
 class Managment extends Component {
 
     constructor(props) {
@@ -19,71 +18,80 @@ class Managment extends Component {
             memberList: [],
             adminCollection: [],
             employeeCollection: []
-
         }
     }
     componentDidMount() {
+          this.getMember();
+    }
+
+    getMember() {
         const memberList = [], adminCollection = [], employeeCollection = [];
-        MemberList.forEach((_member, _key) => {
-            const object = {
-                "key": _key,
-                "Account": _member.Account,
-                "Username": _member.Username,
-                "Role": _member.Role,
-                "isClick": false
-            };
-            memberList.push(object);
-
-            const component =
-                <Member
-                    key={_key}
-                    Account={_member.Account}
-                    Name={_member.Username}
-                    onClick={() => {
-                        this.onClickHandler(_key)
-                    }}
-                    isClick={memberList[_key].isClick}
-                >
-                </Member>;
-
-            _member.Role === "admin" ?
-                adminCollection.push(component) :
-                employeeCollection.push(component);
-
-            this.setState({
-                memberList: memberList,
-                adminCollection: adminCollection,
-                employeeCollection: employeeCollection
+        axios.get('/member', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(res=>{
+            res.data.data.forEach(_member => {
+                const object = {
+                    "Account": _member.Account,
+                    "Username": _member.Username,
+                    "Role": _member.Role,
+                    "isClick": false
+                };
+                memberList.push(object);
+    
+                const component =
+                    <Member
+                        key={_member.Account}
+                        Account={_member.Account}
+                        Name={_member.Username}
+                        Role={_member.Role}
+                        onClick={() => {
+                            this.onClickHandler(_member.Account)
+                        }}
+                        isClick={ false }
+                        update={()=>{this.getMember();}}
+                    >
+                    </Member>;
+    
+                _member.Role === "admin" ?
+                    adminCollection.push(component) :
+                    employeeCollection.push(component);
+    
+                this.setState({
+                    memberList: memberList,
+                    adminCollection: adminCollection,
+                    employeeCollection: employeeCollection
+                });
             });
-        });
+        }); 
     }
 
 
-    onClickHandler(_key) {
+    onClickHandler(account) {
 
         const memberList = this.state.memberList, adminCollection = [], employeeCollection = [];
 
         // ALL CLEAN
 
-        memberList.forEach((element, index) => {
-            if (_key === index)
-                element.isClick = !element.isClick
-            else if (element.isClick !== false)
-                element.isClick = false;
+        memberList.forEach(_member => {
+            if (account === _member.Account)
+                _member.isClick = !_member.isClick
+            else if (_member.isClick !== false)
+                _member.isClick = false;
 
-        })
-
-
-        memberList.forEach((_member, index) => {
             const component =
                 <Member
-                    key={_member.key}
+                    key={_member.Account}
                     Account={_member.Account}
                     Name={_member.Username}
+                    Role={_member.Role}
                     onClick={() => {
-                        this.onClickHandler(index)
+                        this.onClickHandler(_member.Account)
                     }}
                     isClick={_member.isClick}
+                    update={()=>{this.getMember();}}
                 >
                 </Member>;
 
@@ -96,7 +104,7 @@ class Managment extends Component {
                 adminCollection: adminCollection,
                 employeeCollection: employeeCollection
             });
-        });
+        })
     }
 
 
@@ -120,8 +128,7 @@ class Managment extends Component {
                             <Col className="align-self-center d-flex fs-2 text-start">人員管理</Col>
                             <Col className="align-self-center d-flex justify-content-end mx-1">
                                 {/* 新增成員 */}
-                                <AddModal />
-
+                                <AddModal update={()=>{this.getMember();}} />
                             </Col>
                         </Row>
                     </Col>

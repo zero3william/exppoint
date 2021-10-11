@@ -8,7 +8,8 @@ import { Col, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Member.css'
 // modal
-import RemoveModal from './RemoveModal.js'
+import AddAdminModal from './AddAdminModal.js'
+import RemoveAdminModal from './RemoveAdminModal.js'
 import DeleteModal from './DeleteModal.js'
 import EditModal from './EditModal.js'
 /* Import Images */
@@ -29,11 +30,13 @@ class Member extends Component {
     render() {
         const _isClick = this.props.isClick,
             _Name = this.props.Name,
-            _Account = this.props.Account;
+            _Account = this.props.Account,
+            _Role = this.props.Role,
+            _update = this.props.update;
         return (
             <Col xs={1} className="cube p-sm-2 mb-sm-0 mb-2 mt-sm-2 me-2 ms-0 
             w-sm-auto justify-content-center align-self-center"
-                style={{ width: _isClick ? "400px" : "220px" }}
+                style={{ width: _isClick ? "400px" : "220px", height: _isClick ? "150px" : "40px" }}
                 onClick={this.props.onClick}>
 
                 <Row className="justify-content-center align-self-center fs-4">
@@ -44,7 +47,7 @@ class Member extends Component {
                     {/* edit button */}
                     <Col className={_isClick ? "d-block" : "d-none"}>
                         {/* 編輯職員名稱 */}
-                        <EditModal/>
+                        <EditModal  Account={_Account} update={_update} Name={_Name}/>
                     </Col>
 
                 </Row>
@@ -71,10 +74,10 @@ class Member extends Component {
                 </div>
                 {/* button */}
                 <div className={"justify-content-center mt-2 btns " + (_isClick ? "active" : "")}>
-                    {/* 移除管理者 */}
-                    <RemoveModal />
+                    {/* 移除管理者 : 新增管理者 */}
+                    { _Role==='admin' ? <RemoveAdminModal Account={_Account} update={_update} /> : <AddAdminModal Account={_Account} update={_update} />}
                     {/* 刪除 */}
-                    <DeleteModal/>
+                    <DeleteModal Account={_Account} update={_update} Name={_Name} />
                 </div>
 
 
