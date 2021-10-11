@@ -75,7 +75,7 @@ class Member extends Component {
                 {/* button */}
                 <div className={"justify-content-center mt-2 btns " + (_isClick ? "active" : "")}>
                     {/* 移除管理者 : 新增管理者 */}
-                    { _Role==='admin' ? <RemoveAdminModal Account={_Account} update={_update} /> : <AddAdminModal Account={_Account} update={_update} />}
+                    { _Role==='admin' ? <RemoveAdminModal Account={_Account} Name={_Name} update={_update} /> : <AddAdminModal Account={_Account} Name={_Name} update={_update} />}
                     {/* 刪除 */}
                     <DeleteModal Account={_Account} update={_update} Name={_Name} />
                 </div>

@@ -8,7 +8,7 @@ function RemoveAdminModal(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const {Account,update} = props;
+    const {Account,update,Name} = props;
 
     const handleRole = () => {
         axios.patch('/member/role/'+Account, {"Role": 'employee'}, {
@@ -30,7 +30,7 @@ function RemoveAdminModal(props) {
                     <Modal.Title className="text-white">移除管理者</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="justify-content-center text-center">
-                    確定將<b>王小明</b>移除管理者身份嗎?
+                    確定將<b>{Name}</b>移除管理者身份嗎?
 
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-around mb-2">
