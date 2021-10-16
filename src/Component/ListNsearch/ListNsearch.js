@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import './ListNsearch.css';
-
+import axios from 'axios';
 import back from '../../assets/images/g-button.png'
 
 class ListNsearch extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            checkRecords: [],
+        }
+    }
+
+    componentDidMount() {
+        this.getCheckRecords();
+    }
+
+    getCheckRecords = ()=>{
+        axios.get('/checkRecord', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(res=>{
+            this.setState({checkRecords: res.data.data.map(record=>{
+                return {...record,CheckTime:record.CheckTime.split(' ')[0]};
+            })});
+        });
+    }
 
     render() {
         return (
@@ -33,41 +55,14 @@ class ListNsearch extends Component {
 
                         </Row>
                         <div id="listplace">
-                            <Link to="/list" style={{ textDecoration: 'none', color: "#000000" }} className="my-auto">
+                        {this.state.checkRecords.map(record=>
+                            <Link key={record.CR_ID} to={{ pathname:"/list", record }} style={{ textDecoration: 'none', color: "#000000" }} className="my-auto">
                                 <Row className="listitem mx-2 my-2 fs-3">
-                                    <Col className="justify-content-center text-center">2021-09-17</Col>
-                                    <Col className="justify-content-center text-center">江小月</Col>
+                                    <Col className="justify-content-center text-center">{record.CheckTime}</Col>
+                                    <Col className="justify-content-center text-center">{record.Inspector_Username}</Col>
                                 </Row>
                             </Link>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">2021-09-16</Col>
-                                <Col className="justify-content-center text-center">王曉明</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">2021-09-15</Col>
-                                <Col className="justify-content-center text-center">江小月</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">2021-09-14</Col>
-                                <Col className="justify-content-center text-center">王曉明</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">2021-09-13</Col>
-                                <Col className="justify-content-center text-center">江小月</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">2021-09-12</Col>
-                                <Col className="justify-content-center text-center">王曉明</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">2021-09-11</Col>
-                                <Col className="justify-content-center text-center">江小月</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">2021-09-10</Col>
-                                <Col className="justify-content-center text-center">王曉明</Col>
-                            </Row>
-
+                        )}
                         </div>
                     </Col>
                 </Row>

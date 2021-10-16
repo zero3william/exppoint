@@ -1,13 +1,45 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import { withRouter } from "react-router";
+// import axios from 'axios';
 import './List.css';
 import ListCollapse from './List_Collapse.js';
 
 import back from '../../assets/images/g-button.png'
 
 class List extends Component {
+    constructor(props) {
+        super(props);
+        if(!this.props.location.record) {
+            window.location.href = '/listNsearch'
+        }
+        this.state = {
+            ...this.props.location.record
+        }
+    }
+
+    componentDidMount() {
+        // this.props.location.record.CheckDetails.forEach((detail,index) => {
+        //     axios.get('/checkRecord/'+detail.Item_No, {
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'Authorization': 'Bearer ' + localStorage.getItem('token')
+        //         }
+        //     }).then(res=>{
+        //         this.setState({
+        //             CheckDetails: 
+        //                 this.state.CheckDetails.map((d,i)=>{
+        //                     if(i===index) {
+        //                         return {...d, list:res.data.data}
+        //                     } else {
+        //                         return d
+        //                     }
+        //                 })
+        //         });
+        //     });
+        // });
+    }
 
     render() {
         return (
@@ -20,7 +52,7 @@ class List extends Component {
                         </Link>
                     </Col>
                     <Col className="title py-1 fs-2 text-center">
-                        2021-09-17
+                        {this.state.CheckTime}
                     </Col>
                     <Col xs={2} sm={1} className="d-flex mt-2 text-end">
                     </Col>
@@ -32,20 +64,7 @@ class List extends Component {
                             <Col className="justify-content-center text-center">查檢品項</Col>
                         </Row>
                         <div id="listplace">
-                            <ListCollapse />
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">統一陽光高纖豆漿</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">統一陽光低糖高纖豆漿</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">統一陽光高纖燕麥穀奶</Col>
-                            </Row>
-                            <Row className="listitem mx-2 my-2 fs-3">
-                                <Col className="justify-content-center text-center">統一陽光糙米漿</Col>
-                            </Row>
-
+                            {this.state.CheckDetails ? this.state.CheckDetails.map(detail=><ListCollapse detail={detail} key={this.state.CR_ID+'_'+detail.Seq_No} />) : ''}
                         </div>
                     </Col>
                 </Row>
@@ -54,4 +73,4 @@ class List extends Component {
     }
 }
 
-export default List;
+export default withRouter(List);
