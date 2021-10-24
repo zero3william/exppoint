@@ -2,8 +2,39 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Scanleave.css';
+import axios from 'axios';
 
 class Scanleave extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: []
+        };
+
+        const data = JSON.parse(localStorage.getItem('scanData'));
+
+        axios.post('/checkRecord/'+localStorage.getItem('Account'),{},{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(res=>{
+            const CR_ID = res.data.data.CR_ID;
+
+            axios.post('/checkdetail/'+CR_ID,{
+                CR_ID,
+                CheckDetails: data
+            },{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then(res=>{
+                this.setState({data});
+            });
+        });
+    }
 
     render() {
         return (
@@ -19,66 +50,23 @@ class Scanleave extends Component {
                         <Col className="text-center text-white sm_close">數量</Col>
                     </Row>
                     <div className="p-0 fs-4" id="Scanleave_listitem">
-                        <Row className="classdetails mx-2 my-1">
-                            <Col className="text-center">統一無加糖高纖豆漿</Col>
-                            <Col className="text-center sm_close">2021-07-31</Col>
-                            <Col className="text-center sm_close">12</Col>
-                            <div className="sm_opem">
-                                <Row className="" style={{ backgroundColor: "#97c5cb" }}>
-                                    <Col className="text-center text-white">到期日</Col>
-                                    <Col className="text-center text-white">數量</Col>
-                                </Row>
-                                <Row className="classdetails mx-2 my-1">
-                                    <Col className="text-center">2021-07-31</Col>
-                                    <Col className="text-center ">12</Col>
-                                </Row>
-                            </div>
-                        </Row>
-                        <Row className="classdetails mx-2 my-1">
-                            <Col className="text-center">統一無加糖高纖豆漿</Col>
-                            <Col className="text-center sm_close">2021-07-31</Col>
-                            <Col className="text-center sm_close">12</Col>
-                            <div className="sm_opem">
-                                <Row className="" style={{ backgroundColor: "#97c5cb" }}>
-                                    <Col className="text-center text-white">到期日</Col>
-                                    <Col className="text-center text-white">數量</Col>
-                                </Row>
-                                <Row className="classdetails mx-2 my-1">
-                                    <Col className="text-center">2021-09-03</Col>
-                                    <Col className="text-center ">8</Col>
-                                </Row>
-                            </div>
-                        </Row>
-                        <Row className="classdetails mx-2 my-1">
-                            <Col className="text-center">統一無加糖高纖豆漿</Col>
-                            <Col className="text-center sm_close">2021-07-31</Col>
-                            <Col className="text-center sm_close">12</Col>
-                            <div className="sm_opem">
-                                <Row className="" style={{ backgroundColor: "#97c5cb" }}>
-                                    <Col className="text-center text-white">到期日</Col>
-                                    <Col className="text-center text-white">數量</Col>
-                                </Row>
-                                <Row className="classdetails mx-2 my-1">
-                                    <Col className="text-center">2021-07-31</Col>
-                                    <Col className="text-center ">12</Col>
-                                </Row>
-                            </div>
-                        </Row>
-                        <Row className="classdetails mx-2 my-1">
-                            <Col className="text-center">統一無加糖高纖豆漿</Col>
-                            <Col className="text-center sm_close">2021-07-31</Col>
-                            <Col className="text-center sm_close">12</Col>
-                            <div className="sm_opem">
-                                <Row className="" style={{ backgroundColor: "#97c5cb" }}>
-                                    <Col className="text-center text-white">到期日</Col>
-                                    <Col className="text-center text-white">數量</Col>
-                                </Row>
-                                <Row className="classdetails mx-2 my-1">
-                                    <Col className="text-center">2021-09-03</Col>
-                                    <Col className="text-center ">8</Col>
-                                </Row>
-                            </div>
-                        </Row>
+                {this.state.data ? this.state.data.map(item=>
+                    <Row className="classdetails mx-2 my-1" key={item.Item_No}>
+                        <Col className="text-center">{item.Item_Name}</Col>
+                        <Col className="text-center sm_close">{item.ExpDate}</Col>
+                        <Col className="text-center sm_close">{item.Amount}</Col>
+                        <div className="sm_opem">
+                            <Row className="" style={{ backgroundColor: "#97c5cb" }}>
+                                <Col className="text-center text-white">到期日</Col>
+                                <Col className="text-center text-white">數量</Col>
+                            </Row>
+                            <Row className="classdetails mx-2 my-1">
+                                <Col className="text-center">{item.ExpDate}</Col>
+                                <Col className="text-center ">{item.Amount}</Col>
+                            </Row>
+                        </div>
+                    </Row>
+                ) : ''}
                     </div>
                 </div>
 
